@@ -36,21 +36,16 @@ const NavBar = () => {
             className="fas fa-bars text-2xl xl:hidden"
           ></i>
           <div className="hidden xl:flex pr-8">
-            <NavLink exact to="/"
+            <NavLink to="/"
               className="px-8 py-2 flex justify-between" 
             >
               <h1>Inicio</h1>
             </NavLink>
-            <NavLink exact to="/accesorios"
+            <NavLink to="/lista"
               className="px-8 py-2 flex justify-between"  
             >
-              <h1>Accesorios</h1>
-            </NavLink>
-            <NavLink exact to="/carrocerias"
-              className="px-8 py-2 flex justify-between" 
-            >
-              <h1>Carrocerias</h1>
-            </NavLink>
+              <h1>Reservaciones</h1>
+            </NavLink> 
           </div>
         </div>
         {stateMenu ? menuOpciones()  : null} 

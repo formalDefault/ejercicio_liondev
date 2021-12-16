@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import img from './img/img'
 import {ContextStates} from "./context/estados"; 
 import { NavLink } from "react-router-dom"; 
@@ -9,7 +9,7 @@ const Salas = () => {
     const [description, setDescription] = useState();
     const [imagen, setImagen] = useState(); 
     const [state, setState] = useState(false);
-    const { setSala, estadoSala, setEstadoSala } = useContext(ContextStates);
+    const { setSala } = useContext(ContextStates);
 
     const Tarjeta = (imagen, name, description) => {
         const seleccionar = () => {
@@ -22,8 +22,8 @@ const Salas = () => {
           <div data-aos="zoom-in" onClick={() => {
             setSala(name);
             seleccionar();
-          }} className="w-full m-auto rounded-xl border shadow-lg">
-            <img src={imagen} alt="sala" className="rounded-t-xl" />
+          }} className="w-full m-auto rounded-xl border shadow-lg cursor-pointer hover:shadow-2xl hover:shadow-gray-700">
+            <img src={imagen} alt="sala" className="rounded-t-xl xl:object-cover xl:h-96 xl:w-full" />
             <div className="p-2 ">
               <div className="flex justify-between">
                 <b>{name}</b> 
@@ -36,8 +36,9 @@ const Salas = () => {
 
     const VistaTarjeta = () => {
         return (
-          <div data-aos="fade-up" className="relative z-10 bg-gray-800 w-10/12 m-auto rounded-xl top-16 text-white border border-indigo-600 shadow-xl shadow-gray-600"> 
-            <img src={imagen} alt="sala" className="rounded-t-xl w-full h-64 object-cover" />
+          <div data-aos="fade-up" 
+               className="relative z-10 bg-gray-800 w-10/12 m-auto rounded-xl top-16 text-white shadow-xl shadow-gray-600 xl:w-4/12"> 
+            <img src={imagen} alt="sala" className="rounded-t-xl w-full h-64 object-cover xl:h-96 " />
             <div className="p-2 ">
               <div className="flex justify-between">
                 <b>{name}</b> 
@@ -72,7 +73,7 @@ const Salas = () => {
             <div className=" text-center text-xl pt-16 pb-8">
               <b>Salas de juntas excepcionales</b>
             </div>
-            <div className="px-4 py-4 grid grid-cols-2 gap-4">
+            <div className="px-4 py-4 grid grid-cols-2 gap-4 xl:grid-cols-3 xl:px-20">
               {Tarjeta(
                 img.sunset,
                 "Sunset",

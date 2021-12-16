@@ -15,12 +15,12 @@ const ModalReservaciones = () => {
         return (
           <div
             data-aos="fade-up"
-            className="relative top-20 bg-gray-800 z-10 w-9/12 m-auto rounded-xl shadow-2xl text-white border border-indigo-600 shadow-black"
+            className="relative top-20 bg-gray-800 z-10 w-9/12 m-auto rounded-xl shadow-2xl text-white border border-indigo-600 shadow-black xl:w-4/12"
           >
             <img
               src={img.nature}
               alt="sala"
-              className="rounded-t-xl object-cover w-full h-48"
+              className="rounded-t-xl object-cover w-full h-48 xl:h-96 "
             />
             <div className="p-2 ">
               <div className="flex justify-between">

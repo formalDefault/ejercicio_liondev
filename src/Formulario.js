@@ -51,50 +51,54 @@ export default function Formulario() {
           >
             {({ errors }) => (
               <div data-aos='fade-up' className="relative z-40 ">
-                <div className=" pt-12 xl:pt-40 pb-8 w-screen">
-                  <div className="w-full rounded-2xl text-white m-auto p-4  xl:w-4/12 xl:bg-black xl:py-12  "> 
-                    <div className="text-center text-black text-2xl">
+                <div className=" pt-12 xl:pt-28 pb-8 w-screen">
+                  <div className="w-full rounded-2xl  m-auto p-4  xl:w-4/12 xl:border xl:shadow-xl xl:shadow-gray-700 "> 
+                    <div className="text-center text-black text-2xl mb-4">
                         <h1><b>{titulo}</b></h1> 
                         <hr className="w-8/12 m-auto" />
                     </div>
                     <Form>
+                    <label>Fecha:</label>
                     <Field
                         name="fecha"
                         id="fecha"
                         type="date"
                         placeholder="Nombre completo"
-                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 my-5 px-4"
+                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
                       /> 
+                      <label>Hora de inicio:</label>
                       <Field
                         name="horaInicio"
                         id="horaInicio"
                         type="time"
                         placeholder="Hora de inicio"
-                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 my-5 px-4"
+                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
                       />
+                      <label>Hora de termino:</label>
                       <Field
                         name="horaFin"
                         id="horaFin"
                         type="time"
                         placeholder="hora fin"
-                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 my-5 px-4"
+                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
                       />  
                       <Field
                         name="titular"
                         id="titular"
                         type="text"
                         placeholder="Nombre del titular"
-                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 my-5 px-4"
+                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
                       />  
                       <ErrorMessage name="titular" component={() => (<div className="text-red-500">{errors.titular}</div>)}/> 
+                      <label>Sala de juntas:</label>
                       <Field
                         name="sala"
                         id="sala"
                         type="text"
                         placeholder="Nombre del sala"
-                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 my-5 px-4"
+                        className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
                       />  
-                       <center>
+                       <center className="text-white">
                         <button
                           type="submit"
                           className="py-1 w-full rounded-xl px-8 bg-gradient-to-r from-pink-700 to-yellow-500"
@@ -108,8 +112,7 @@ export default function Formulario() {
                           >
                             Volver
                           </NavLink>
-                        </div>
-                        
+                        </div> 
                       </center>
                     </Form>
                   </div>
