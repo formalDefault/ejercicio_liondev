@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 export const ContextStates = React.createContext();
 
 function Estados(props) {
-    const [stateMenu, setStateMenu] = useState(false); 
+    const [stateMenu, setStateMenu] = useState(true); 
     const [stateFormulario, setStateFormulario] =  useState(false); 
     const [stateLoading, setStateLoading] =  useState(true);  
-    const [modalPop, setModalPop] = useState(false);
+    const [listaReservaciones, setListaReservaciones] =  useState([]);  
+    const [sala, setSala] = useState('');  
+    const [APIDATA, setApi] = useState('http://localhost:4000'); 
+    // const [filterOpc, setFilter]  = useState('pendiente');
     return (
         <ContextStates.Provider value={
             {
@@ -15,8 +18,13 @@ function Estados(props) {
                 setStateFormulario, 
                 stateLoading, 
                 setStateLoading,
-                modalPop, 
-                setModalPop
+                sala, 
+                setSala,
+                listaReservaciones, 
+                APIDATA,
+                setListaReservaciones
+                // filterOpc, 
+                // setFilter
             }}>
             {props.children}
         </ContextStates.Provider>

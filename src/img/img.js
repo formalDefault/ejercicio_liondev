@@ -1,7 +1,11 @@
 import logo from './icono.png'
-import sala from './sala.jpg'
+import nature from './nature.jpg'
+import future from './future.jpg'
+import sunset from './sunset.jpg'
 
 export default {
-    "imgSala": sala,
+    "nature": nature,
+    "future": future,
+    "sunset": sunset,
     "logo": logo
 }
