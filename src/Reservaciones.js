@@ -1,27 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { ContextStates } from "./context/estados";  
 import { NavLink } from 'react-router-dom' 
 import Axios from 'axios';  
      
 function Reservaciones() {
 
-    const { APIDATA, listaReservaciones,setListaReservaciones, filterOpc, setFilter } = useContext(ContextStates);
+    const { APIDATA, listaReservaciones,setListaReservaciones, stateLoading, setStateLoading } = useContext(ContextStates);
     
     useEffect(() => {
         Axios.get(`${APIDATA}/api/get`).then(( response ) => { 
           setListaReservaciones(response.data); 
+          setStateLoading(false)
         }) 
         .catch((error) => {console.log(error);})
       }, []);
 
-    const Listar = () => {  
-      
-      // let filtro = listaReservaciones.filter((i) => i.estado == filterOpc);
-      // console.log(filtro, filterOpc)
+    const Listar = () => {   
       return (
           <div className="pt-36 mb-12">
-            {listaReservaciones.map((i) => {   
-              let ruta = `/reserva?id=${i.id}`
+            {listaReservaciones.map((i) => {    
+              let ruta = `/reserva?id=${i.id}&img=${i.sala}` 
               return (
               <NavLink to={ruta} key={i.id}> 
                   <div  className="z-10 grid grid-cols-1 w-10/12 m-auto">
@@ -45,7 +43,8 @@ function Reservaciones() {
             <b>Lista de Reservaciones</b>
             <div className=""> 
             </div>
-        </div>
+          {stateLoading ? <div type="submit" className="py-1 w-full px-8 text-black xl:m-auto"><i className="animate-spin fas fa-circle-notch"></i></div> : null}
+        </div> 
         <Listar/>  
       </div>
     );

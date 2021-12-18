@@ -1,25 +1,34 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { ContextStates } from "./context/estados"; 
 import { useLocation, NavLink } from "react-router-dom";
 import Axios from "axios"
-import img from './img/img'
+import img from './img/img'; 
 
 const ModalReservaciones = () => { 
     const { listaReservaciones, APIDATA } = useContext(ContextStates); 
+    const [imgState, setImagen] = useState(); 
     const [state, setState] = useState('Cancelar')
     const useQuery = () => {return new URLSearchParams(useLocation().search)};
     let query = useQuery(); 
-    const buscador = (xid) => listaReservaciones.find(i => i.id == xid);
+    const buscador = (xid) => listaReservaciones.find(i => i.id == xid); 
     let reserva = buscador(query.get("id"))  
+    let imgSala = reserva.sala.toLowerCase(); 
+    const selectImagen = (imgSala) => {
+      if(imgSala == 'sunset') setImagen(img.sunset)
+      if(imgSala == 'nature') setImagen(img.nature)
+      if(imgSala == 'future') setImagen(img.future) 
+    }
+
     const Tarjeta = () => { 
+      {selectImagen(imgSala)}
         return (
           <div
             data-aos="fade-up"
             className="relative top-20 bg-gray-800 z-10 w-9/12 m-auto rounded-xl shadow-2xl text-white border border-indigo-600 shadow-black xl:w-4/12"
           >
             <img
-              src={img.nature}
-              alt="sala"
+              src={imgState}
+              alt={imgSala}
               className="rounded-t-xl object-cover w-full h-48 xl:h-96 "
             />
             <div className="p-2 ">
@@ -55,7 +64,7 @@ const ModalReservaciones = () => {
               <div
                 className="w-full m-auto text-center mt-8 mb-4"
                 onClick={() =>
-                  Axios.put(`${APIDATA}/api/cancelar/${reserva.id}`).then((response) => {
+                  Axios.delete(`${APIDATA}/api/cancelar/${reserva.id}`).then((response) => {
                     setState(response.data);
                   }).catch((error) => {console.log(error);})
                 }

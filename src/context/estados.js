@@ -7,7 +7,7 @@ function Estados(props) {
     const [stateLoading, setStateLoading] =  useState(true);  
     const [listaReservaciones, setListaReservaciones] =  useState([]);  
     const [sala, setSala] = useState('');  
-    const [APIDATA, setApi] = useState('https://apiliondev.herokuapp.com/'); 
+    const [APIDATA, setApi] = useState('https://apiliondev.herokuapp.com'); 
     // const [filterOpc, setFilter]  = useState('pendiente');
     return (
         <ContextStates.Provider value={

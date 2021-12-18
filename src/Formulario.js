@@ -4,9 +4,7 @@ import { ContextStates } from "./context/estados";
 import { NavLink } from 'react-router-dom'
 import Axios from 'axios';
  
-export default function Formulario() {   
-    
-    const [showMessage, setShowMessage] = useState(false); 
+export default function Formulario() {    
     const [titulo, setTitulo] = useState('Registrar reservacion');
     const { sala, APIDATA } = useContext(ContextStates);
 
@@ -20,7 +18,7 @@ export default function Formulario() {
               horaFin: "",
               titular: "",
               sala: sala,
-              estado: "pendiente"
+              estado: "pendiente",
             }}
             //validacion de los input
             validate={(valores) => {
@@ -32,40 +30,41 @@ export default function Formulario() {
               } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.titular)) {
                 errores.titular =
                   "El nombre solo puede tener letras y espacios";
-              }  
+              }
 
               return errores;
             }}
-
             //funcion del boton de enviar
-            onSubmit={(valores) => { 
-               var body = valores
-               Axios.post(`${APIDATA}/api/insert`, body)
-                 .then((response) => {   
-                   setTitulo(response.data);
-                 })
-                 .catch((err) => {
-                   console.log(err);
-                 });
+            onSubmit={(valores) => {
+              var body = valores;  
+              Axios.post(`${APIDATA}/api/insert`, body)
+                .then((response) => {
+                  setTitulo(response.data); 
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }}
           >
             {({ errors }) => (
-              <div data-aos='fade-up' className="relative z-40 ">
+              <div data-aos="fade-up" className="relative z-40 ">
                 <div className=" pt-12 xl:pt-28 pb-8 w-screen">
-                  <div className="w-full rounded-2xl  m-auto p-4  xl:w-4/12 xl:border xl:shadow-xl xl:shadow-gray-700 "> 
+                  <div className="w-full rounded-2xl  m-auto p-4  xl:w-4/12 xl:border xl:shadow-xl xl:shadow-gray-700 ">
                     <div className="text-center text-black text-2xl mb-4">
-                        <h1><b>{titulo}</b></h1> 
-                        <hr className="w-8/12 m-auto" />
+                      <h1>
+                        <b>{titulo}</b>
+                      </h1>
+                      <hr className="w-8/12 m-auto" />
                     </div>
                     <Form>
-                    <label>Fecha:</label>
-                    <Field
+                      <label>Fecha:</label>
+                      <Field
                         name="fecha"
                         id="fecha"
                         type="date"
                         placeholder="Nombre completo"
                         className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
-                      /> 
+                      />
                       <label>Hora de inicio:</label>
                       <Field
                         name="horaInicio"
@@ -81,15 +80,20 @@ export default function Formulario() {
                         type="time"
                         placeholder="hora fin"
                         className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
-                      />  
+                      />
                       <Field
                         name="titular"
                         id="titular"
                         type="text"
                         placeholder="Nombre del titular"
                         className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
-                      />  
-                      <ErrorMessage name="titular" component={() => (<div className="text-red-500">{errors.titular}</div>)}/> 
+                      />
+                      <ErrorMessage
+                        name="titular"
+                        component={() => (
+                          <div className="text-red-500">{errors.titular}</div>
+                        )}
+                      />
                       <label>Sala de juntas:</label>
                       <Field
                         name="sala"
@@ -97,14 +101,14 @@ export default function Formulario() {
                         type="text"
                         placeholder="Nombre del sala"
                         className="outline-none text-black border-b-2 border-yellow-600 rounded-lg w-full h-12 mb-5 px-4"
-                      />  
-                       <center className="text-white">
-                        <button
-                          type="submit"
-                          className="py-1 w-full rounded-xl px-8 bg-gradient-to-r from-pink-700 to-yellow-500"
-                        >
-                          Registrar
-                        </button>
+                      />
+                      <center className="text-white"> 
+                          <button
+                            type="submit"
+                            className="py-1 w-full rounded-xl px-8 bg-gradient-to-r from-pink-700 to-yellow-500"
+                          >
+                            Registrar
+                          </button> 
                         <div className="mt-4 ">
                           <NavLink
                             to="/"
@@ -112,7 +116,7 @@ export default function Formulario() {
                           >
                             Volver
                           </NavLink>
-                        </div> 
+                        </div>
                       </center>
                     </Form>
                   </div>
@@ -121,23 +125,11 @@ export default function Formulario() {
             )}
           </Formik>
         );
-    }
-
-    const mensaje = () => {
-        return (
-            <div className="absolute z-50 ">   
-                    <div className="bg-blue-600 pt-8 xl:bg-transparent xl:pt-40 pb-8 w-screen"> 
-                        <div  className="text-center w-5/6 rounded-2xl text-white bg-blue-600 border-2 border-blue-600 m-auto p-4 shadow-2xl xl:w-4/12 xl:py-6 "> 
-                            <b>Mensaje enviado</b> 
-                        </div>
-                    </div>  
-            </div>
-        )
-    }
+    } 
     
     return (
         <div> 
-            {showMessage ? mensaje() : Formulario()}   
+            <Formulario />  
         </div>
     )
     

@@ -59,6 +59,9 @@ const Salas = () => {
                   Volver
                 </button>
               </div>
+              <div className="text-xs">
+                <h2><b>Nota: </b>si te encuentras en México registra tu reservacion con una aticipacion de 4-5 hrs minimo</h2>
+              </div>
             </div>
           </div>
         );

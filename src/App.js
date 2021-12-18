@@ -10,12 +10,12 @@ import Form from './Formulario'
 
 const NavBar = () => {
     const [stateMenu, setStateMenu ] =  useState(false);
-    const handleChange = () => setStateMenu(current => !current)
+    const handleChange = () => setStateMenu((estado) => !estado)
   
     const menuOpciones = () => {
       return(
-        <div data-aos="fade-left"  className="z-50  shadow-lg xl:hidden text-white float-right py-4 w-6/12 bg-gray-900 grid grid-rows gap-y-2">
-          <NavLink exact to="/" onClick={handleChange} className="px-4 py-2 flex justify-between">
+        <div data-aos="fade-left"  className="z-50 shadow-lg xl:hidden text-white float-right py-4 w-6/12 bg-gray-900 grid grid-rows gap-y-2">
+          <NavLink to="/" onClick={handleChange} className="px-4 py-2 flex justify-between">
             <i className="fas fa-home text-lg"></i>
             <h1>Inicio</h1>
           </NavLink> 
@@ -33,7 +33,7 @@ const NavBar = () => {
           <div className="text-2xl"><b>AHL</b></div>
           <i
             onClick={handleChange}
-            className="fas fa-bars text-2xl xl:hidden"
+            className="fas fa-bars text-2xl lg:hidden xl:hidden"
           ></i>
           <div className="hidden xl:flex pr-8">
             <NavLink to="/"
